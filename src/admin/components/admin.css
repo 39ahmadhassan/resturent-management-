@@ -1,0 +1,147 @@
+.admin_log{
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin_log form{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1c1816;
+    padding: 20px 0px;
+    border-radius: 10px;
+}
+.admin_log form input{
+    width: 70%;
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: #313131;
+    padding-left: 10px;
+    color: white;
+    text-transform: capitalize;
+    margin: 0px auto 20px auto;
+}
+.admin_log form a{
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+.admin_log form input[type="submit"] {
+    background-color: red;
+}
+.admin_log form label{
+    width: 70%;
+    margin: 0px auto;
+    text-transform: capitalize;
+}
+/* sidebar  */
+.nav-link .fa-chevron-right,
+.nav-link .fa-chevron-down {
+  font-size: 1rem;
+  margin-right: 5px;
+}
+.sidebar{
+    position: fixed;
+    overflow-y: auto;
+    height: 100vh;
+}  
+.content{
+    margin-left: 16.5%;
+}
+table{
+    border-radius: 8px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 10px 8px rgba(69,65,78,0.1);
+}
+thead tr{
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+thead tr td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+    padding-left: 20px;
+    /* border: 1px solid black; */
+}
+tbody tr td{
+    padding: 10px 0px 10px 20px;
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+tbody tr td:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+tbody tr td img{
+    width: 40px;
+    height: auto;
+}
+tbody tr td button{
+    width: 60px;
+    margin-left: 12px;
+    border: none;
+    border-radius: 12px;
+    padding: 6px;
+    text-transform: capitalize;
+    height: auto;
+}
+tbody tr:nth-child(1){
+    font-weight: 600;
+}
+/* td{
+    border: 1px solid black;
+} */
+/* 
+thead{
+    background-color: rgb(238, 236, 236);
+}
+thead td{
+    text-transform: capitalize;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+td{
+    padding-left: 10px;
+    text-transform: capitalize;
+    text-align: center;
+    border: 1px solid rgb(153, 153, 153);
+}
+td img{
+    width: 60px;
+    height: auto;
+}
+td button{
+    padding: 6px 10px;
+    color: white;
+    text-transform: capitalize;
+    margin: 0px 4px;
+    background-color: #313131;
+    border-radius: 10px;
+    border: none;
+} */
+
+
+
+.MuiPagination-root{
+    width: 50%;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 767px) {
+    .sidebar{
+        position: static;
+        overflow-y: auto;
+        height: auto;
+    }  
+    .content{
+        margin-left: 0px;
+    }
+  }

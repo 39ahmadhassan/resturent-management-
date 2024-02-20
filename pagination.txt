@@ -1,0 +1,169 @@
+import React, { useState } from 'react';
+import Mysidebar from '../components/Mysidebar';
+import best1 from '../assets/images/best1.png';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+function Adminmenu() {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10; // Number of products to show per page
+  const totalProducts = 1000; // Total number of products
+
+  const handleOpen1 = () => setOpen1(true);
+  const handleClose1 = () => setOpen1(false);
+
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+
+  const rowGenerate = () => {
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+    const rows = [];
+  
+    for (let i = startIndex; i < endIndex; i++) {
+      rows.push(
+        <tr key={i}>
+          <td>{i + 1}</td>
+          <td>burger</td>
+          <td>300</td>
+          <td>
+            <img src={best1} alt="" />
+          </td>
+          <td>20%</td>
+          <td>
+            <button onClick={handleOpen1}>edit</button>
+            <button onClick={handleOpen2}>delete</button>
+          </td>
+        </tr>
+      );
+    }
+  
+    return rows;
+  };
+  
+
+  const handleChangePage = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  return (
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <Mysidebar />
+          </div>
+          <div className="col-md-9">
+            <h2>Menu</h2>
+            <table>
+              <thead>
+                <tr>
+                  <td>sr.no</td>
+                  <td>product name</td>
+                  <td>price</td>
+                  <td>image</td>
+                  <td>discount</td>
+                  <td>action</td>
+                </tr>
+              </thead>
+              <tbody>
+                {rowGenerate()}
+              </tbody>
+            </table>
+            <Stack className="my-4" spacing={5}>
+              <Pagination
+                count={Math.ceil(totalProducts / productsPerPage)}
+                page={currentPage}
+                onChange={handleChangePage}
+                renderItem={(item) => (
+                  <PaginationItem
+                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                    {...item}
+                  />
+                )}
+              />
+            </Stack>
+            {/* modal data */}
+            <div>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={open1}
+                onClose={handleClose1}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                  backdrop: {
+                    timeout: 500,
+                  },
+                }}
+              >
+                <Fade in={open1}>
+                  <Box sx={style}>
+                    <Typography id="transition-modal-title" variant="h6" component="h2">
+                      Edit Modal 1
+                    </Typography>
+                    <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                      Edit Modal 1 Content
+                    </Typography>
+                  </Box>
+                </Fade>
+              </Modal>
+            </div>
+            <div>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={open2}
+                onClose={handleClose2}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                  backdrop: {
+                    timeout: 500,
+                  },
+                }}
+              >
+                <Fade in={open2}>
+                  <Box sx={style}>
+                    <Typography id="transition-modal-title" variant="h6" component="h2">
+                      Edit Modal 2
+                    </Typography>
+                    <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                      Edit Modal 2 Content
+                    </Typography>
+                  </Box>
+                </Fade>
+              </Modal>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Adminmenu;
